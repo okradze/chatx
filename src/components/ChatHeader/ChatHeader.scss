@@ -1,0 +1,24 @@
+@import '../../utils';
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    margin: 0 1rem;
+}
+
+.chat-header__content {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.chat-header .settings-icon {
+}
+
+.chat-header__name {
+    font-size: 1.5rem;
+}
+
+.chat-header__status {
+    color: $text-grey;
+    font-size: 1.4rem;
+}

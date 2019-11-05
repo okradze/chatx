@@ -1,5 +1,29 @@
+@import '../../utils';
+
 .homepage {
+    grid-template-rows: min-content 1fr;
+    grid-template-areas: 'header header' 'sidebar chat';
+}
+
+.header {
+    grid-area: header;
+    box-shadow: 0 2px 4px rgba($dark, 0.15);
+}
+
+.homepage,
+.header {
+    grid-template-columns: 1fr 3fr;
     display: grid;
-    grid-template-columns: max-content 1fr;
-    grid-template-areas: 'sidebar chat';
+}
+
+.sidebar {
+    grid-area: sidebar;
+    border-right: 1px solid $grey;
+}
+
+.settings-icon {
+    width: 2rem;
+    height: 2rem;
+    fill: $dark;
+    cursor: pointer;
 }

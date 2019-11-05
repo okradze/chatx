@@ -1,3 +1,5 @@
+@import '../../utils';
+
 .chats-list {
-    grid-area: sidebar;
+    overflow-y: auto;
 }

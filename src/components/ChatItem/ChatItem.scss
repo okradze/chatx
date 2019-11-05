@@ -1,3 +1,5 @@
+@import '../../utils';
+
 .chat-item {
     padding: 1rem;
     display: grid;
@@ -8,23 +10,23 @@
         'avatar name name data'
         'avatar message message notification';
     align-items: center;
+    border-bottom: 1px solid $grey;
     transition: background-color 0.15s ease-in-out;
     cursor: pointer;
 
     &:hover {
-        background-color: #ececec;
+        background-color: $grey;
     }
 }
 
 .chat-item .avatar {
     align-self: center;
     grid-area: avatar;
-    box-shadow: 0 0 3px 1px rgba(#333, 0.1);
+    box-shadow: 0 0 3px 1px rgba($dark, 0.1);
 }
 
 .chat-item__name {
     grid-area: name;
-    color: #333;
     font-weight: 600;
     font-size: 1.5rem;
 }
@@ -32,12 +34,12 @@
 .chat-item__last-message {
     grid-area: message;
     font-size: 1.4rem;
-    color: #777;
+    color: $text-grey;
 }
 
 .chat-item__date {
     font-size: 1.5rem;
-    color: #777;
+    color: $text-grey;
 }
 
 .chat-item__date,
@@ -50,8 +52,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #e0302a;
-    color: white;
+    background-color: $secondary;
+    color: $white;
     border-radius: 50%;
     width: 2rem;
     height: 2rem;

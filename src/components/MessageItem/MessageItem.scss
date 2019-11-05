@@ -1,10 +1,13 @@
+@import '../../utils';
+
 .message-item {
     display: grid;
     align-items: center;
-    grid-column-gap: 1rem;
+    grid-column-gap: 1.5rem;
     grid-template-columns: min-content max-content;
     grid-template-rows: repeat(2, min-content);
     grid-template-areas: 'avatar text' '. date';
+    margin-bottom: 1.5rem;
 }
 
 .message-item .avatar {
@@ -14,14 +17,15 @@
 
 .message-item__text {
     grid-area: text;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: white;
     border-radius: 5px;
     padding: 1rem;
-    background-color: #425cee;
+    background-color: $primary;
+    box-shadow: 2px 2px 4px rgba($dark, 0.15);
 }
 .message-item__date {
     grid-area: date;
     font-size: 1.4rem;
-    color: #777;
+    color: $text-grey;
 }

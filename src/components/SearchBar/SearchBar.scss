@@ -1,0 +1,30 @@
+@import '../../utils';
+
+.search-bar {
+    position: relative;
+    margin: 0 1rem;
+    margin: 2rem 1rem;
+}
+
+.search-bar__icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    fill: $text-grey;
+    position: absolute;
+    top: 50%;
+    left: 1.5rem;
+    transform: translateY(-50%);
+}
+
+.search-bar__input {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem 2rem 1rem 3.5rem;
+    background-color: $grey;
+
+    &:hover,
+    &:focus {
+        background-color: $darker-grey;
+    }
+}

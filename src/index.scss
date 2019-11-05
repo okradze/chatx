@@ -1,4 +1,5 @@
 @import-normalize;
+@import './utils';
 
 *,
 *::before,
@@ -14,6 +15,7 @@ html {
 }
 
 body {
+    color: $dark;
     line-height: 1.5;
     font-size: 1.6rem;
     font-family: 'Open Sans', sans-serif;

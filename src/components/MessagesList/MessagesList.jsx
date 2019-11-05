@@ -67,8 +67,8 @@ const messages = [
 const MessagesList = () => (
     <div className='chat-overview'>
         <div className='messages-list'>
-            {messages.map(({ key, ...otherMessageProps }) => (
-                <MessageItem {...otherMessageProps} />
+            {messages.map(({ id, ...otherMessageProps }, idx) => (
+                <MessageItem key={idx} {...otherMessageProps} />
             ))}
         </div>
         <MessageForm />
