@@ -1,0 +1,27 @@
+.message-item {
+    display: grid;
+    align-items: center;
+    grid-column-gap: 1rem;
+    grid-template-columns: min-content max-content;
+    grid-template-rows: repeat(2, min-content);
+    grid-template-areas: 'avatar text' '. date';
+}
+
+.message-item .avatar {
+    grid-area: avatar;
+    align-self: end;
+}
+
+.message-item__text {
+    grid-area: text;
+    font-size: 1.5rem;
+    color: white;
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: #425cee;
+}
+.message-item__date {
+    grid-area: date;
+    font-size: 1.4rem;
+    color: #777;
+}
