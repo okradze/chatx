@@ -1,0 +1,13 @@
+@import '../../utils';
+
+.form-input {
+    border: 1px solid $darker-grey;
+    padding: 1.5rem;
+    border-radius: 5px;
+    min-width: 1px;
+
+    &:focus {
+        outline: none;
+        border-color: $light-primary;
+    }
+}

@@ -1,0 +1,10 @@
+@import '../../utils';
+
+.custom-button {
+    background-color: $light-primary;
+    color: $white;
+    border: none;
+    padding: 1.5rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}

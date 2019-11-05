@@ -1,0 +1,27 @@
+.signup-form {
+    width: 30rem;
+    margin: 0 auto;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .form-input {
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+
+    .custom-button {
+        margin-top: 1rem;
+    }
+}
+
+.signup-form__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-form__title {
+    text-align: center;
+    margin-bottom: 3rem;
+}

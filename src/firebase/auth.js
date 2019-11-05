@@ -13,6 +13,7 @@ export const signup = async (email, password, additionalInfo) => {
     })
 }
 
-export const login = (email, password) => {
-    return auth.signInWithEmailAndPassword(email, password)
-}
+export const login = (email, password) =>
+    auth.signInWithEmailAndPassword(email, password)
+
+export const logout = () => auth.signOut()

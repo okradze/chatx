@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
+
+import CustomButton from '../CustomButton/CustomButton'
+import FormInput from '../FormInput/FormInput'
 import { login } from '../../firebase/auth'
+
+import './LogInForm.scss'
 
 const LogInForm = () => {
     const [userCredentials, setUserCredentials] = useState({
@@ -29,22 +34,24 @@ const LogInForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
+        <form className='login-form' onSubmit={handleSubmit}>
+            <FormInput
                 name='email'
                 value={email}
                 onChange={handleChange}
                 type='email'
                 placeholder='Email'
+                required
             />
-            <input
+            <FormInput
                 name='password'
                 value={password}
                 onChange={handleChange}
                 type='password'
                 placeholder='Password'
+                required
             />
-            <button type='submit'>Log In</button>
+            <CustomButton type='submit'>Log In</CustomButton>
         </form>
     )
 }

@@ -1,18 +1,36 @@
-import React from 'react'
-import Avatar from '../Avatar/Avatar'
+import React, { useContext, useState } from 'react'
 
 import { ReactComponent as SettingsIcon } from '../../assets/settings.svg'
+import { UserContext } from '../../providers/user/UserProvider'
+import ProfilePreviewDropdown from '../Dropdown/ProfilePreviewDropdown'
+import Avatar from '../Avatar/Avatar'
 import './ProfilePreview.scss'
 
-const ProfilePreview = () => (
-    <div className='profile-preview'>
-        <Avatar
-            imageUrl='https://robohash.org/velitnumquamodio.jpg?size=128x128&set=set1'
-            medium
-        />
-        <span className='profile-preview__name'>Mirian Okradze</span>
-        <SettingsIcon className='settings-icon' />
-    </div>
-)
+const ProfilePreview = () => {
+    const {
+        user: { displayName, photoURL },
+    } = useContext(UserContext)
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+
+    const toggleDropdownOpen = () => setIsDropdownOpen(!isDropdownOpen)
+
+    return (
+        <div className='profile-preview'>
+            <Avatar imageUrl={photoURL} medium />
+            <span className='profile-preview__name'>{displayName}</span>
+            <div className='profile-preview__icon'>
+                <SettingsIcon
+                    onClick={toggleDropdownOpen}
+                    className='settings-icon'
+                />
+                {isDropdownOpen && (
+                    <ProfilePreviewDropdown
+                        toggleDropdownOpen={toggleDropdownOpen}
+                    />
+                )}
+            </div>
+        </div>
+    )
+}
 
 export default ProfilePreview

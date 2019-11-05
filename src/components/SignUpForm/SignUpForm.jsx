@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
+
 import { signup } from '../../firebase/auth'
+import FormInput from '../FormInput/FormInput'
+import CustomButton from '../CustomButton/CustomButton'
+import './SignUpForm.scss'
 
 const SignUpForm = () => {
     const [userCredentials, setUserCredentials] = useState({
@@ -26,30 +30,33 @@ const SignUpForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                name='displayName'
-                value={displayName}
-                onChange={handleChange}
-                type='text'
-                placeholder='Full Name'
-            />
-            <input
-                name='email'
-                value={email}
-                onChange={handleChange}
-                type='email'
-                placeholder='Email'
-            />
-            <input
-                name='password'
-                value={password}
-                onChange={handleChange}
-                type='password'
-                placeholder='Password'
-            />
-            <button type='submit'>Sign Up</button>
-        </form>
+        <div className='signup-form'>
+            <h3 className='signup-form__title'>Sign Up</h3>
+            <form className='signup-form__form' onSubmit={handleSubmit}>
+                <FormInput
+                    name='displayName'
+                    value={displayName}
+                    onChange={handleChange}
+                    type='text'
+                    placeholder='Full Name'
+                />
+                <FormInput
+                    name='email'
+                    value={email}
+                    onChange={handleChange}
+                    type='email'
+                    placeholder='Email'
+                />
+                <FormInput
+                    name='password'
+                    value={password}
+                    onChange={handleChange}
+                    type='password'
+                    placeholder='Password'
+                />
+                <CustomButton type='submit'>Sign Up</CustomButton>
+            </form>
+        </div>
     )
 }
 
