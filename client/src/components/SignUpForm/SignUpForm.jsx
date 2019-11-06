@@ -1,26 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
-import { signup } from '../../firebase/auth'
+import { UserContext } from '../../providers/user/UserProvider'
 import FormInput from '../FormInput/FormInput'
 import CustomButton from '../CustomButton/CustomButton'
 import './SignUpForm.scss'
 
 const SignUpForm = () => {
     const [userCredentials, setUserCredentials] = useState({
-        displayName: '',
+        firstName: '',
+        lastName: '',
         email: '',
         password: '',
     })
     const [loading, setLoading] = useState(false)
-
-    const { displayName, email, password } = userCredentials
+    const { signup } = useContext(UserContext)
 
     const handleSubmit = async event => {
         event.preventDefault()
 
         setLoading(true)
         try {
-            await signup(email, password, { displayName })
+            await signup(userCredentials)
         } catch (error) {}
         setLoading(false)
     }
@@ -34,16 +34,25 @@ const SignUpForm = () => {
         }))
     }
 
+    const { firstName, lastName, email, password } = userCredentials
+
     return (
         <div className='signup-form'>
             <h3 className='signup-form__title'>Sign Up</h3>
             <form className='signup-form__form' onSubmit={handleSubmit}>
                 <FormInput
-                    name='displayName'
-                    value={displayName}
+                    name='firstName'
+                    value={firstName}
                     onChange={handleChange}
                     type='text'
-                    placeholder='Full Name'
+                    placeholder='First Name'
+                />
+                <FormInput
+                    name='lastName'
+                    value={lastName}
+                    onChange={handleChange}
+                    type='text'
+                    placeholder='Last Name'
                 />
                 <FormInput
                     name='email'

@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
+import { UserContext } from '../../providers/user/UserProvider'
 import CustomButton from '../CustomButton/CustomButton'
 import FormInput from '../FormInput/FormInput'
-import { login } from '../../firebase/auth'
 
 import './LogInForm.scss'
 
@@ -12,15 +12,14 @@ const LogInForm = () => {
         password: '',
     })
     const [loading, setLoading] = useState(false)
-
-    const { email, password } = userCredentials
+    const { login } = useContext(UserContext)
 
     const handleSubmit = async event => {
         event.preventDefault()
 
         setLoading(true)
         try {
-            await login(email, password)
+            await login(userCredentials)
         } catch (error) {
             setUserCredentials({ email: '', password: '' })
         }
@@ -35,6 +34,8 @@ const LogInForm = () => {
             [name]: value,
         }))
     }
+
+    const { email, password } = userCredentials
 
     return (
         <div className='login-form-container'>
