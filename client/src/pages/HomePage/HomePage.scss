@@ -19,6 +19,8 @@
 .sidebar {
     grid-area: sidebar;
     border-right: 1px solid $grey;
+    display: flex;
+    flex-direction: column;
 }
 
 .settings-icon {

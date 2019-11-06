@@ -1,23 +1,30 @@
 import React, { useState } from 'react'
 
-import { signup } from '../../firebase/auth'
-import FormInput from '../FormInput/FormInput'
 import CustomButton from '../CustomButton/CustomButton'
-import './SignUpForm.scss'
+import FormInput from '../FormInput/FormInput'
+import { login } from '../../firebase/auth'
 
-const SignUpForm = () => {
+import './LogInForm.scss'
+
+const LogInForm = () => {
     const [userCredentials, setUserCredentials] = useState({
-        displayName: '',
         email: '',
         password: '',
     })
+    const [loading, setLoading] = useState(false)
 
-    const { displayName, email, password } = userCredentials
+    const { email, password } = userCredentials
 
-    const handleSubmit = event => {
+    const handleSubmit = async event => {
         event.preventDefault()
 
-        signup(email, password, { displayName })
+        setLoading(true)
+        try {
+            await login(email, password)
+        } catch (error) {
+            setUserCredentials({ email: '', password: '' })
+        }
+        setLoading(false)
     }
 
     const handleChange = event => {
@@ -30,22 +37,15 @@ const SignUpForm = () => {
     }
 
     return (
-        <div className='signup-form'>
-            <h3 className='signup-form__title'>Sign Up</h3>
-            <form className='signup-form__form' onSubmit={handleSubmit}>
-                <FormInput
-                    name='displayName'
-                    value={displayName}
-                    onChange={handleChange}
-                    type='text'
-                    placeholder='Full Name'
-                />
+        <div className='login-form-container'>
+            <form className='login-form' onSubmit={handleSubmit}>
                 <FormInput
                     name='email'
                     value={email}
                     onChange={handleChange}
                     type='email'
                     placeholder='Email'
+                    required
                 />
                 <FormInput
                     name='password'
@@ -53,11 +53,14 @@ const SignUpForm = () => {
                     onChange={handleChange}
                     type='password'
                     placeholder='Password'
+                    required
                 />
-                <CustomButton type='submit'>Sign Up</CustomButton>
+                <CustomButton type='submit' disabled={loading}>
+                    Log In
+                </CustomButton>
             </form>
         </div>
     )
 }
 
-export default SignUpForm
+export default LogInForm

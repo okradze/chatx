@@ -6,7 +6,7 @@ const Avatar = ({ imageUrl, medium }) => (
     <img
         className={`avatar ${medium ? 'avatar--medium' : 'avatar--small'}`}
         src={imageUrl}
-        alt='Profile avatar'
+        alt='Avatar'
     />
 )
 

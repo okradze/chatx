@@ -1,0 +1,21 @@
+@import '../../utils';
+
+.custom-button {
+    background-color: $light-primary;
+    color: $white;
+    border: none;
+    padding: 1.5rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+
+    &:focus,
+    &:hover {
+        outline: none;
+        background-color: darken($light-primary, 6%);
+    }
+
+    &:disabled {
+        background-color: lighten($light-primary, 10%);
+    }
+}
