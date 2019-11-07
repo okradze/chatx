@@ -70,7 +70,7 @@ router.post('/signup', async (req, res) => {
         }).save()
 
         generateTokenAndSetCookie(res, user._id)
-        res.send(user)
+        res.status(201).send(user)
     } catch (error) {
         res.status(500).send({ error: 'Unable to signup' })
     }

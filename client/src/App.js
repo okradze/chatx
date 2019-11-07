@@ -15,14 +15,14 @@ const App = () => {
     }, [checkAuth])
 
     return (
-        <BrowserRouter>
-            <div className='app'>
+        <div className='app'>
+            <BrowserRouter>
                 <Switch>
                     <PublicRoute exact path='/' component={AuthPage} />
                     <PrivateRoute path='/home' component={HomePage} />
                 </Switch>
-            </div>
-        </BrowserRouter>
+            </BrowserRouter>
+        </div>
     )
 }
 
