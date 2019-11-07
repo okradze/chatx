@@ -1,11 +1,12 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
 
-import { UserContext } from '../../providers/user/UserProvider'
+import { signup } from '../../redux/user/userActions'
 import FormInput from '../FormInput/FormInput'
 import CustomButton from '../CustomButton/CustomButton'
 import './SignUpForm.scss'
 
-const SignUpForm = () => {
+const SignUpForm = ({ signup }) => {
     const [userCredentials, setUserCredentials] = useState({
         firstName: '',
         lastName: '',
@@ -13,7 +14,6 @@ const SignUpForm = () => {
         password: '',
     })
     const [loading, setLoading] = useState(false)
-    const { signup } = useContext(UserContext)
 
     const handleSubmit = async event => {
         event.preventDefault()
@@ -76,4 +76,11 @@ const SignUpForm = () => {
     )
 }
 
-export default SignUpForm
+const mapDispatchToProps = dispatch => ({
+    signup: userCredentials => dispatch(signup(userCredentials)),
+})
+
+export default connect(
+    null,
+    mapDispatchToProps,
+)(SignUpForm)

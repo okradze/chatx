@@ -1,15 +1,14 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Switch } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-import { UserContext } from './providers/user/UserProvider'
+import { checkAuth } from './redux/user/userActions'
 import PrivateRoute from './routes/PrivateRoute'
 import PublicRoute from './routes/PublicRoute'
 import HomePage from './pages/HomePage/HomePage'
 import AuthPage from './pages/AuthPage/AuthPage'
 
-const App = () => {
-    const { checkAuth } = useContext(UserContext)
-
+const App = ({ checkAuth }) => {
     useEffect(() => {
         checkAuth()
     }, [checkAuth])
@@ -26,4 +25,8 @@ const App = () => {
     )
 }
 
-export default App
+const mapDispatchToProps = dispatch => ({
+    checkAuth: () => dispatch(checkAuth())
+})
+
+export default connect(null, mapDispatchToProps)(App)

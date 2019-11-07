@@ -1,18 +1,18 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
 
-import { UserContext } from '../../providers/user/UserProvider'
+import { login } from '../../redux/user/userActions'
 import CustomButton from '../CustomButton/CustomButton'
 import FormInput from '../FormInput/FormInput'
 
 import './LogInForm.scss'
 
-const LogInForm = () => {
+const LogInForm = ({ login }) => {
     const [userCredentials, setUserCredentials] = useState({
         email: '',
         password: '',
     })
     const [loading, setLoading] = useState(false)
-    const { login } = useContext(UserContext)
 
     const handleSubmit = async event => {
         event.preventDefault()
@@ -64,4 +64,11 @@ const LogInForm = () => {
     )
 }
 
-export default LogInForm
+const mapDispatchToProps = dispatch => ({
+    login: userCredentials => dispatch(login(userCredentials)),
+})
+
+export default connect(
+    null,
+    mapDispatchToProps,
+)(LogInForm)

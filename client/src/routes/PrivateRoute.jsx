@@ -1,13 +1,18 @@
-import React, { useContext } from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
 import { Route, Redirect } from 'react-router-dom'
-import { UserContext } from '../providers/user/UserProvider'
 
-const PrivateRoute = ({ component: Component, ...otherRouteProps }) => {
-    const { user } = useContext(UserContext)
+import { selectUser } from '../redux/user/userSelectors'
 
+const PrivateRoute = ({ user, component: Component, ...otherRouteProps }) => {
     if (user) return <Route component={Component} {...otherRouteProps} />
 
     return <Redirect to='/' />
 }
 
-export default PrivateRoute
+const mapStateToProps = createStructuredSelector({
+    user: selectUser,
+})
+
+export default connect(mapStateToProps)(PrivateRoute)

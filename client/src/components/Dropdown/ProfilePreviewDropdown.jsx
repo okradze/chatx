@@ -1,11 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
 
-import { UserContext } from '../../providers/user/UserProvider'
+import { logout } from '../../redux/user/userActions'
 import './Dropdown.scss'
 
-const ProfilePreviewDropdown = ({ toggleDropdownOpen }) => {
-    const { logout } = useContext(UserContext)
-
+const ProfilePreviewDropdown = ({ toggleDropdownOpen, logout }) => {
     const handleLogout = async () => {
         await logout()
         toggleDropdownOpen()
@@ -22,4 +21,11 @@ const ProfilePreviewDropdown = ({ toggleDropdownOpen }) => {
     )
 }
 
-export default ProfilePreviewDropdown
+const mapDispatchToProps = dispatch => ({
+    logout: () => dispatch(logout()),
+})
+
+export default connect(
+    null,
+    mapDispatchToProps,
+)(ProfilePreviewDropdown)
