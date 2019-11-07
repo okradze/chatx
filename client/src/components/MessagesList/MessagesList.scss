@@ -1,4 +1,10 @@
 .chat-overview {
-    padding: 3rem;
+    display: flex;
+    flex-direction: column;
     grid-area: chat;
+}
+
+.messages-list {
+    flex-grow: 1;
+    padding: 3rem;
 }

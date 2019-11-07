@@ -3,8 +3,8 @@ import React from 'react'
 import Avatar from '../Avatar/Avatar'
 import './ChatItem.scss'
 
-const ChatItem = ({ name, imageUrl, lastMessage }) => (
-    <div className='chat-item'>
+const ChatItem = ({ _id, name, imageUrl, lastMessage, setSelectedChat }) => (
+    <div onClick={() => setSelectedChat(_id)} className='chat-item'>
         <Avatar imageUrl={imageUrl} medium />
         <span className='chat-item__name'>{name}</span>
         <span className='chat-item__last-message'>{lastMessage}</span>

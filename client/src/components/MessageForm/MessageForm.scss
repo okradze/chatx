@@ -1,0 +1,9 @@
+@import '../../utils';
+
+.message-form__input {
+    padding: 2rem;
+    font-size: 1.5rem;
+    width: 100%;
+    height: 100%;
+    border: 1px solid $darker-grey;
+}

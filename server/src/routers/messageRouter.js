@@ -5,7 +5,7 @@ import auth from '../middlewares/auth'
 const router = express.Router()
 
 // @route /api/messages
-// @desc get messages
+// @desc get chat messages
 router.get('/', auth, async (req, res) => {
     try {
         const messages = await Message.find({ chat: req.query.chat })
@@ -16,6 +16,8 @@ router.get('/', auth, async (req, res) => {
     }
 })
 
+// @route /api/messages
+// @desc delete message by id
 router.delete('/', auth, async (req, res) => {
     try {
         await Message.findByIdAndDelete(req.body.message)

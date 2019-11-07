@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react'
+import React, { useState, useCallback, createContext } from 'react'
 import axios from 'axios'
 
 export const UserContext = createContext()
@@ -21,10 +21,10 @@ const UserProvider = ({ children }) => {
         setUser(null)
     }
 
-    const checkAuth = async () => {
+    const checkAuth = useCallback(async () => {
         const response = await axios.post('auth/check')
         setUser(response.data)
-    }
+    }, [])
 
     return (
         <UserContext.Provider

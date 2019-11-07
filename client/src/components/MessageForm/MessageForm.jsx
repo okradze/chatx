@@ -1,8 +1,13 @@
 import React from 'react'
+import './MessageForm.scss'
 
 const MessageForm = () => (
-    <form>
-        <input placeholder='Send message' type='text' />
+    <form className='message-form'>
+        <input
+            className='message-form__input'
+            placeholder='Send message'
+            type='text'
+        />
     </form>
 )
 

@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { useEffect, useContext } from 'react'
 
+import { ChatsContext } from '../../providers/chats/ChatsProvider'
 import ChatItem from '../ChatItem/ChatItem'
 import './ChatsList.scss'
 
 const ChatsList = () => {
-    const chats = null
+    const { fetchChats, setSelectedChat, chats } = useContext(ChatsContext)
+
+    useEffect(() => {
+        fetchChats()
+    }, [fetchChats])
+
     return (
         <div className='chats-list'>
             {chats &&
-                chats.map(({ id, ...otherChatItemProps }) => (
-                    <ChatItem key={id} {...otherChatItemProps} />
+                chats.map(chatItem => (
+                    <ChatItem
+                        key={chatItem._id}
+                        setSelectedChat={setSelectedChat}
+                        {...chatItem}
+                    />
                 ))}
         </div>
     )
