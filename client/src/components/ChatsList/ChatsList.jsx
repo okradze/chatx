@@ -1,28 +1,36 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
 
-import { ChatsContext } from '../../providers/chats/ChatsProvider'
+import { fetchChats } from '../../redux/chats/chatsActions'
+import { selectChats } from '../../redux/chats/chatsSelectors'
 import ChatItem from '../ChatItem/ChatItem'
 import './ChatsList.scss'
 
-const ChatsList = () => {
-    const { fetchChats, setSelectedChat, chats } = useContext(ChatsContext)
-
+const ChatsList = ({ fetchChats, chats }) => {
     useEffect(() => {
         fetchChats()
     }, [fetchChats])
 
     return (
         <div className='chats-list'>
-            {chats &&
+            {chats.length > 0 &&
                 chats.map(chatItem => (
-                    <ChatItem
-                        key={chatItem._id}
-                        setSelectedChat={setSelectedChat}
-                        {...chatItem}
-                    />
+                    <ChatItem key={chatItem._id} {...chatItem} />
                 ))}
         </div>
     )
 }
 
-export default ChatsList
+const mapStateToProps = createStructuredSelector({
+    chats: selectChats,
+})
+
+const mapDispatchToProps = dispatch => ({
+    fetchChats: () => dispatch(fetchChats()),
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(ChatsList)

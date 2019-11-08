@@ -1,5 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
+import { setSelectedChat } from '../../redux/chats/chatsActions'
 import Avatar from '../Avatar/Avatar'
 import './ChatItem.scss'
 
@@ -13,4 +15,11 @@ const ChatItem = ({ _id, name, imageUrl, lastMessage, setSelectedChat }) => (
     </div>
 )
 
-export default ChatItem
+const mapDispatchToProps = dispatch => ({
+    setSelectedChat: id => dispatch(setSelectedChat(id)),
+})
+
+export default connect(
+    null,
+    mapDispatchToProps,
+)(ChatItem)
