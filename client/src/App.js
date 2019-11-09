@@ -26,7 +26,10 @@ const App = ({ checkAuth }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    checkAuth: () => dispatch(checkAuth())
+    checkAuth: () => dispatch(checkAuth()),
 })
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(
+    null,
+    mapDispatchToProps,
+)(App)

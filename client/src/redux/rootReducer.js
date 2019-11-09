@@ -5,7 +5,7 @@ import chatsReducer from './chats/chatsReducer'
 
 const rootReducer = combineReducers({
     user: userReducer,
-    chats: chatsReducer
+    chats: chatsReducer,
 })
 
 export default rootReducer

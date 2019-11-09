@@ -10,6 +10,12 @@
     margin-bottom: 1.5rem;
 }
 
+.message-item--right {
+    grid-template-columns: max-content min-content;
+    align-self: flex-end;
+    grid-template-areas: 'text avatar' 'date .';
+}
+
 .message-item .avatar {
     grid-area: avatar;
     align-self: end;

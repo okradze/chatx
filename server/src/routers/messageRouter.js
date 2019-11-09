@@ -37,6 +37,7 @@ router.post('/', auth, async (req, res) => {
         }).save()
 
         res.status(201).send(message)
+        socketio.broadcast.emit(`message:${req.body.chat}`, message)
     } catch (error) {
         res.status(500).send({ error: 'Unable to send a message' })
     }

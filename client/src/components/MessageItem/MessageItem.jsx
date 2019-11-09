@@ -1,14 +1,24 @@
 import React from 'react'
-import Avatar from '../Avatar/Avatar'
+import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
 
+import { selectUserId } from '../../redux/user/userSelectors'
+import Avatar from '../Avatar/Avatar'
 import './MessageItem.scss'
 
-const MessageItem = ({ imageUrl, text, date }) => (
-    <div className='message-item'>
+const MessageItem = ({ imageUrl, text, date, user, currentUserId }) => (
+    <div
+        className={`message-item ${user === currentUserId &&
+            'message-item--right'}`}
+    >
         <Avatar imageUrl={imageUrl} />
         <div className='message-item__text'>{text}</div>
         <div className='message-item__date'>{date}</div>
     </div>
 )
 
-export default MessageItem
+const mapStateToProps = createStructuredSelector({
+    currentUserId: selectUserId,
+})
+
+export default connect(mapStateToProps)(MessageItem)

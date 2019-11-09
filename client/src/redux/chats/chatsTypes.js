@@ -1,3 +1,5 @@
 export const SET_CHATS = 'SET_CHATS'
 export const CREATE_CHAT = 'CREATE_CHAT'
-export const SET_SELECTED_CHAT = 'SET_SELECTED_CHAT'
+export const SET_SELECTED_CHAT_ID = 'SET_SELECTED_CHAT_ID'
+export const SET_MESSAGES = 'SET_MESSAGES'
+export const ADD_MESSAGE = 'ADD_MESSAGE'
